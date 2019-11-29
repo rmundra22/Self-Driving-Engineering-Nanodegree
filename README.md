@@ -18,6 +18,4 @@ Working to build a Self-Driving Car a reality!
   - Part 6: Kidnapped Vehicle
   - Part 7: Highway Driving
   - Part 8: PID Controller
-  - Part 9: Improve Your LinkedIn Profile
-  - Part 10: Optimize Your GitHub Profile
-  - Part 11: Programming a Real Self-Driving Car
+  - Part 9: Programming a Real Self-Driving Car

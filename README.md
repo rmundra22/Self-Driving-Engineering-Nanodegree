@@ -1,5 +1,5 @@
 # Self-Driving-Engineering-Nanodegree
-Working to build a Self-Driving Car a reality!
+Working to build Self-Driving Car a reality!
 
 ## Phase 1 Computer Vision, Deep Learning, and Sensor Fusion
 

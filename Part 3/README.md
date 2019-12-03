@@ -300,6 +300,7 @@ From the graph below we can visualize the performance of the training pipeline. 
        25: Road work                      0.000%
        31: Wild animals crossing          0.000%
     ------------------------------------------------------------
+    ------------------------------------------------------------
 
 ---
 

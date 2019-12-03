@@ -131,10 +131,11 @@
  - BATCH_SIZE = 256
  - learning rate = 0.001
  
+
 ![LeNet Model Architecture](artifacts/LeNet Model Architecture.png)
 
 ### [C.] Train, Validate and Test the Model
-> A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.
+A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.
 
 
 > **Training and validating the LeNet model** 
@@ -198,7 +199,14 @@ From the graph below we can visualize the performance of the training pipeline. 
 
 ![png](output_50_2.png)
 
-> CLASS LABELS DESCRIPTION FOR TEST IMAGES FROM WEB ['14-stop.png', '33-turn_right_ahead.png', '15-no-vechicles.png', '12-priority-road.png', '.ipynb_checkpoints', '22-bumpy-road.png']
+> CLASS LABELS DESCRIPTION FOR TEST IMAGES FROM WEB 
+
+- '14-stop.png'
+- '33-turn_right_ahead.png'
+- '15-no-vechicles.png'
+- '12-priority-road.png'
+- '.ipynb_checkpoints'
+- '22-bumpy-road.png'
 
 ![png](output_51_0.png)
 

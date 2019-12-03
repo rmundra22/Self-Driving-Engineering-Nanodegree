@@ -22,48 +22,48 @@ The pickled data is a dictionary with 4 key/value pairs:
     - Some more statistic info = (Class Name, Count, Label Name)
 
     No. of Images in class  0  : 180.0 	         Traffic Signal Label : Speed limit (20km/h)
-    No. of Images in class  1  : 1980.0 	 Traffic Signal Label : Speed limit (30km/h)
-    No. of Images in class  2  : 2010.0 	 Traffic Signal Label : Speed limit (50km/h)
-    No. of Images in class  3  : 1260.0 	 Traffic Signal Label : Speed limit (60km/h)
-    No. of Images in class  4  : 1770.0 	 Traffic Signal Label : Speed limit (70km/h)
-    No. of Images in class  5  : 1650.0 	 Traffic Signal Label : Speed limit (80km/h)
+    No. of Images in class  1  : 1980.0 	     Traffic Signal Label : Speed limit (30km/h)
+    No. of Images in class  2  : 2010.0 	     Traffic Signal Label : Speed limit (50km/h)
+    No. of Images in class  3  : 1260.0 	     Traffic Signal Label : Speed limit (60km/h)
+    No. of Images in class  4  : 1770.0 	     Traffic Signal Label : Speed limit (70km/h)
+    No. of Images in class  5  : 1650.0 	     Traffic Signal Label : Speed limit (80km/h)
     No. of Images in class  6  : 360.0 	         Traffic Signal Label : End of speed limit (80km/h)
-    No. of Images in class  7  : 1290.0 	 Traffic Signal Label : Speed limit (100km/h)
-    No. of Images in class  8  : 1260.0 	 Traffic Signal Label : Speed limit (120km/h)
-    No. of Images in class  9  : 1320.0 	 Traffic Signal Label : No passing
-    No. of Images in class 10  : 1800.0 	 Traffic Signal Label : No passing for vehicles over 3.5 metric tons
-    No. of Images in class 11  : 1170.0 	 Traffic Signal Label : Right-of-way at the next intersection
-    No. of Images in class 12  : 1890.0 	 Traffic Signal Label : Priority road
-    No. of Images in class 13  : 1920.0 	 Traffic Signal Label : Yield
+    No. of Images in class  7  : 1290.0 	     Traffic Signal Label : Speed limit (100km/h)
+    No. of Images in class  8  : 1260.0 	     Traffic Signal Label : Speed limit (120km/h)
+    No. of Images in class  9  : 1320.0 	     Traffic Signal Label : No passing
+    No. of Images in class 10  : 1800.0 	     Traffic Signal Label : No passing for vehicles over 3.5 metric tons
+    No. of Images in class 11  : 1170.0 	     Traffic Signal Label : Right-of-way at the next intersection
+    No. of Images in class 12  : 1890.0 	     Traffic Signal Label : Priority road
+    No. of Images in class 13  : 1920.0 	     Traffic Signal Label : Yield
     No. of Images in class 14  : 690.0 	         Traffic Signal Label : Stop
     No. of Images in class 15  : 540.0 	         Traffic Signal Label : No vehicles
     No. of Images in class 16  : 360.0 	         Traffic Signal Label : Vehicles over 3.5 metric tons prohibited
     No. of Images in class 17  : 990.0 	         Traffic Signal Label : No entry
-    No. of Images in class 18  : 1080.0 	 Traffic Signal Label : General caution
+    No. of Images in class 18  : 1080.0 	     Traffic Signal Label : General caution
     No. of Images in class 19  : 180.0 	         Traffic Signal Label : Dangerous curve to the left
     No. of Images in class 20  : 300.0 	         Traffic Signal Label : Dangerous curve to the right
     No. of Images in class 21  : 270.0 	         Traffic Signal Label : Double curve
     No. of Images in class 22  : 330.0 	         Traffic Signal Label : Bumpy road
     No. of Images in class 23  : 450.0 	         Traffic Signal Label : Slippery road
     No. of Images in class 24  : 240.0 	         Traffic Signal Label : Road narrows on the right
-    No. of Images in class 25  : 1350.0 	 Traffic Signal Label : Road work
+    No. of Images in class 25  : 1350.0     	 Traffic Signal Label : Road work
     No. of Images in class 26  : 540.0 	         Traffic Signal Label : Traffic signals
-    No. of Images in class 27  : 210.0 	 	 Traffic Signal Label : Pedestrians
-    No. of Images in class 28  : 480.0 	 	 Traffic Signal Label : Children crossing
-    No. of Images in class 29  : 240.0 		 Traffic Signal Label : Bicycles crossing
-    No. of Images in class 30  : 390.0 	 	 Traffic Signal Label : Beware of ice/snow
-    No. of Images in class 31  : 690.0 		 Traffic Signal Label : Wild animals crossing
-    No. of Images in class 32  : 210.0 		 Traffic Signal Label : End of all speed and passing limits
-    No. of Images in class 33  : 599.0 		 Traffic Signal Label : Turn right ahead
-    No. of Images in class 34  : 360.0 		 Traffic Signal Label : Turn left ahead
-    No. of Images in class 35  : 1080.0 	 Traffic Signal Label : Ahead only
-    No. of Images in class 36  : 330.0 		 Traffic Signal Label : Go straight or right
-    No. of Images in class 37  : 180.0 	 	 Traffic Signal Label : Go straight or left
-    No. of Images in class 38  : 1860.0 	 Traffic Signal Label : Keep right
-    No. of Images in class 39  : 270.0 		 Traffic Signal Label : Keep left
-    No. of Images in class 40  : 300.0 		 Traffic Signal Label : Roundabout mandatory
-    No. of Images in class 41  : 210.0 		 Traffic Signal Label : End of no passing
-    No. of Images in class 42  : 210.0 		 Traffic Signal Label : End of no passing by vehicles over 3.5 metric tons
+    No. of Images in class 27  : 210.0 	    	 Traffic Signal Label : Pedestrians
+    No. of Images in class 28  : 480.0 	    	 Traffic Signal Label : Children crossing
+    No. of Images in class 29  : 240.0 		     Traffic Signal Label : Bicycles crossing
+    No. of Images in class 30  : 390.0 	    	 Traffic Signal Label : Beware of ice/snow
+    No. of Images in class 31  : 690.0 		     Traffic Signal Label : Wild animals crossing
+    No. of Images in class 32  : 210.0 		     Traffic Signal Label : End of all speed and passing limits
+    No. of Images in class 33  : 599.0 		     Traffic Signal Label : Turn right ahead
+    No. of Images in class 34  : 360.0 	    	 Traffic Signal Label : Turn left ahead
+    No. of Images in class 35  : 1080.0 	     Traffic Signal Label : Ahead only
+    No. of Images in class 36  : 330.0 		     Traffic Signal Label : Go straight or right
+    No. of Images in class 37  : 180.0 	    	 Traffic Signal Label : Go straight or left
+    No. of Images in class 38  : 1860.0     	 Traffic Signal Label : Keep right
+    No. of Images in class 39  : 270.0 		     Traffic Signal Label : Keep left
+    No. of Images in class 40  : 300.0 		     Traffic Signal Label : Roundabout mandatory
+    No. of Images in class 41  : 210.0 		     Traffic Signal Label : End of no passing
+    No. of Images in class 42  : 210.0 		     Traffic Signal Label : End of no passing by vehicles over 3.5 metric tons
 
 ### [B.] Dataset Visualization
 > Visualize the German Traffic Signs Dataset using the pickled file(s) which included: plotting traffic sign images, plotting the count of each sign, etc. 
@@ -116,39 +116,39 @@ Looking at the distributions graphs above for training, validation and testing -
 ### [C.] Train, Validate and Test the Model
 > A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting.
 
-- **Training and validating the LeNet model**
+> **Training and validating the LeNet model**
     
-    **EPOCH 1 ...**
+**EPOCH 1 ...**
 
 Validation Accuracy = 0.684
 
 Train Accuracy = 0.743
     
-    **EPOCH 2 ...**
+**EPOCH 2 ...**
 
 Validation Accuracy = 0.819
 
 Train Accuracy = 0.886
     
-    ...
+
+...
+...    
+...
     
-    ...
-    
-    ...
-    
-    **EPOCH 49 ...**
+
+**EPOCH 49 ...**
 
 Validation Accuracy = 0.959
 
 Train Accuracy = 0.996
     
-    **EPOCH 50 ...**
+**EPOCH 50 ...**
 
 Validation Accuracy = 0.959
 
 Train Accuracy = 0.997
 
-- **Calculating the test data accuracy with the saved Model saved**
+> **Calculating the test data accuracy with the saved Model saved**
 
 Test Accuracy = 0.943
 
@@ -165,7 +165,7 @@ Test Accuracy = 0.943
 
 ![png](output_50_2.png)
 
-> ['14-stop.png', '33-turn_right_ahead.png', '15-no-vechicles.png', '12-priority-road.png', '.ipynb_checkpoints', '22-bumpy-road.png']
+> CLASS LABELS DESCRIPTION FOR TEST IMAGES FROM WEB ['14-stop.png', '33-turn_right_ahead.png', '15-no-vechicles.png', '12-priority-road.png', '.ipynb_checkpoints', '22-bumpy-road.png']
 
 ![png](output_51_0.png)
 

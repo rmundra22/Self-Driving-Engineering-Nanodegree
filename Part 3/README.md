@@ -67,6 +67,7 @@ The pickled data is a dictionary with 4 key/value pairs:
 
 ### [B.] Dataset Visualization
 > Visualize the German Traffic Signs Dataset using the pickled file(s) which included: plotting traffic sign images, plotting the count of each sign, etc. 
+
 ![png](output_14_0.png)
 
 
@@ -75,7 +76,9 @@ The pickled data is a dictionary with 4 key/value pairs:
 Looking at the distributions graphs above for training, validation and testing - they seem to be almost similar. hence we can conclude that validation and testing set are a good representative (proxy) of the training dataset.
 
 ![png](output_17_1.png)
+
 ![png](output_18_1.png)
+
 ![png](output_19_1.png)
 
 ----
@@ -91,12 +94,15 @@ Looking at the distributions graphs above for training, validation and testing -
 ### [A.] Preprocessing RGB images
 
 - **Converting RGB images to Gray images:**
+
 ![png](output_25_0.png)
 
 - **Converting Gray images to Scaled / Normalized images:** Minimally, the image data should be normalized so that the data has mean zero and equal variance. For image data, `(pixel - 128)/ 128` is a quick way to approximately normalize the data and can be used in this project. 
+
 ![png](output_26_0.png)
 
 - **Converting Scaled Images to Contrast Stretched Images:**
+
 ![png](output_27_0.png)
 
 ### [B.] Fine tuning the Model Architecture
@@ -113,12 +119,16 @@ Looking at the distributions graphs above for training, validation and testing -
 - **Training and validating the LeNet model**
     
     **EPOCH 1 ...**
-    Validation Accuracy = 0.684
-    Train Accuracy = 0.743
+
+Validation Accuracy = 0.684
+
+Train Accuracy = 0.743
     
     **EPOCH 2 ...**
-    Validation Accuracy = 0.819
-    Train Accuracy = 0.886
+
+Validation Accuracy = 0.819
+
+Train Accuracy = 0.886
     
     ...
     
@@ -127,15 +137,20 @@ Looking at the distributions graphs above for training, validation and testing -
     ...
     
     **EPOCH 49 ...**
-    Validation Accuracy = 0.959
-    Train Accuracy = 0.996
+
+Validation Accuracy = 0.959
+
+Train Accuracy = 0.996
     
     **EPOCH 50 ...**
-    Validation Accuracy = 0.959
-    Train Accuracy = 0.997
+
+Validation Accuracy = 0.959
+
+Train Accuracy = 0.997
 
 - **Calculating the test data accuracy with the saved Model saved**
-    Test Accuracy = 0.943
+
+Test Accuracy = 0.943
 
 ![png](output_46_0.png)
 
@@ -149,7 +164,9 @@ Looking at the distributions graphs above for training, validation and testing -
 ### [A.] Loading and Outputing the downloaded Images after resizing
 
 ![png](output_50_2.png)
+
 > ['14-stop.png', '33-turn_right_ahead.png', '15-no-vechicles.png', '12-priority-road.png', '.ipynb_checkpoints', '22-bumpy-road.png']
+
 ![png](output_51_0.png)
 
 ### [B.] Predicting the Sign Type for Each Image
@@ -260,7 +277,9 @@ For an example of what feature map outputs look like, check out NVIDIA's results
  <p></p> 
 
 **GOT THIS ERROR**
-    ---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
 
     <ipython-input-46-dcb048557f2e> in <module>()
     ----> 1 outputFeatureMap(x[11], conv2, activation_min=-1, activation_max=-1 ,plt_num=1)

@@ -119,9 +119,13 @@ Looking at the distributions graphs above for training, validation and testing -
     **EPOCH 2 ...**
     Validation Accuracy = 0.819
     Train Accuracy = 0.886
+    
     ...
+    
     ...
+    
     ...
+    
     **EPOCH 49 ...**
     Validation Accuracy = 0.959
     Train Accuracy = 0.996

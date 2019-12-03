@@ -148,7 +148,9 @@ Now I fixated dropout to 0.25, batch size of 256 and tried incresing epochs say 
 
 I knew that dropout techniques has a role to play in dealing with the possible overfitting. I tried increasing the dropout from 0.25, then 0.30, then 0.50, then 0.70, then 0.80 and keeping rest same from the previous step. I observed my model got corrected for overfitting. Now after many steps of tuning I found that the model which gives best results was with above stated hyperparameters.
 
-    
+------------------------------------------------------------
+------------------------------------------------------------
+
 **EPOCH 1 ...**
 
 Validation Accuracy = 0.684
@@ -178,6 +180,9 @@ Train Accuracy = 0.996
 Validation Accuracy = 0.959
 
 Train Accuracy = 0.997
+
+------------------------------------------------------------
+------------------------------------------------------------
 
 > **Calculating the test data accuracy with the saved Model saved**
 From the graph below we can visualize the performance of the training pipeline. My final model results were:
@@ -321,12 +326,13 @@ For an example of what feature map outputs look like, check out NVIDIA's results
 
 **GOT THIS ERROR**
 
-
----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
     <ipython-input-46-dcb048557f2e> in <module>()
     ----> 1 outputFeatureMap(x[11], conv2, activation_min=-1, activation_max=-1 ,plt_num=1)
 
     RuntimeError: Attempted to use a closed Session.
 
-    ---------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------

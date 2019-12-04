@@ -134,7 +134,7 @@
  - learning rate = 0.001
  
 
-![LeNet Model Architecture for Classification](artifacts/LeNet Model Architecture.png)
+![LeNet Model Architecture for Classification](artifacts/LeNet Architecture _ f.png)
 
 ### [C.] Train, Validate and Test the Model
 A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.

@@ -105,7 +105,7 @@
     * _difficulty of visualization:_ grayscale is easier to manipulate and visualize because it has two spatial dimensions and one brightness dimension. On the contrary, RGB has two spatial dimensions and three color dimensions.
     * _processing speed:_ grayscale images means less data, therby making it faster to be processed. It can save huge amount of time in video processing
 
-![Preprocessing - Train images to gray scaled images](artifacts/output_25_0.png)
+<img src="artifacts/output_25_0.png" width="40%">
 
 
 - **Converting Gray images to Scaled / Normalized images:** The second step need the image data to be normalized so that the it has mean zero and equal variance. For image data, `(pixel - 128)/ 128` is a quick way to approximately normalize the data and can be used in this project. _This step changes the range of pixel intensity so all images can have consistent range for pixel values. The reason of normalization is following:
@@ -113,18 +113,17 @@
     * _model stability:_ skewed pixel values are harmful, because our model will multiply weights and add bias to these image pixels. If extremely large or small values are involved, both operations can amplify the skewness and cause large error.
     * _improve gradient calculation:_ model needs to calculate gradients in backward propagation. With skewed pixel values, gradient calculation can be out of control.
 
-![Preprocessing - Gray images to normalized images](artifacts/output_26_0.png)
+<img src="artifacts/output_26_0.png" width="40%">
 
 
 - **Converting Scaled Images to Contrast Stretched Images:** 3. Rescale Intensity as an experiment, I found above simple linear transform can be further improved with “exposure.rescale_intensity” method from skimage library. It uniformly rescaled image intensity to make pixel values inside consistent range and achieved better results. The reason of contrast stretching is following:
 
     * _rescaling intensity:_ images can have very different contrast due to glare, change of illumination intensity, or etc. It causes images either very bright or too dark, which is difficult to recognize.
 
-![Preprocessing - Normalized images to Contrast Stretched images](artifacts/output_27_0.png)
+<img src="artifacts/output_27_0.png" width="40%">
 
 
 ### [B.] Fine tuning the Model Architecture
-> Finally we fixated the model architecture here. Consider the figure / diagram below describing the final model. It includes visual description of model type, layers, layer sizes, connectivity, etc. We tuned the model and found that the following hyper-parameters gives the best results:
 
  - mu = 0
  - sigma = 0.1
@@ -134,15 +133,17 @@
  - learning rate = 0.001
  
 
-![LeNet Model Architecture for Classification](artifacts/LeNet Architecture _ f.png)
+### [C.] LeNet Model Architecture for Classification
 
-### [C.] Train, Validate and Test the Model
+Though, I didn't made much changes to LeNet architecture and kept on fine tuning it. I got results above assignment's expectation so I didn't tried hard for tuning a altogehter different model architecture. Like adding or taking away layers (pooling, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
+<img src="artifacts/LeNet Architecture _ f.png">
+
+### [D.] Train, Validate and Test the Model
 A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.
 
 
 > **Training and validating the LeNet model** 
-
-Though, I didn't made much changes to LeNet architecture and kept on fine tuning it. I got results above assignment's expectation so I didn't tried hard for tuning a altogehter different model architecture. Like adding or taking away layers (pooling, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 
 Training and validating a model is an iterative approach. While building my first model I started training a LeNet Architecture with just 20 epochs, batch size of 256 and dropout of 0.25. I found that the train and validation accuracies were both low which means that my model was underfitting. 
 

@@ -225,7 +225,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 - Class Labels for the test images are: [14 33 15 12 22]
 - The first image might be difficult to classify because it has a similarity with the No entry sign.
 
-![Preditions for Downloaded Images](artifacts/output_54_1.png)
+<img src="artifacts/output_54_1.png" width = "50%">
 
 ### [C.] Analyzing the Performance on images above
 > Test Accuracy = 100.000 %

@@ -70,19 +70,19 @@
 > Visualized the German Traffic Signs Dataset using the pickled file(s) which included: 
 
 > plotting traffic sign images
-![png](output_14_0.png)
+![German Traffic Sign Dataset](artifacts/output_14_0.png)
 
 > plotting the count of each sign
-![png](output_17_1.png)
+![Dataset Summary Statistics](artifacts/output_17_1.png)
 
 ### [C.] Exploratory Analysis
 > Here is an exploratory visualization of the data set. It is a bar chart showing how the grouping of the dataset for model training. Looking at the distributions graphs for training, validation and testing - they seem to be almost similar. Hence we can conclude that validation and testing set are a good representative (proxy) of the training dataset. Though the dataset have few classes with more examples then the others. This can be clearly observed in the Bar charts below. This tells us that the dataset we have is class imbalanced.
 
-![png](output_17_1.png)
+![Exploratory Analysis of Training Data](artifacts/output_17_1.png)
 
-![png](output_18_1.png)
+![Exploratory Analysis of Validation Data](artifacts/output_18_1.png)
 
-![png](output_19_1.png)
+![Exploratory Analysis of Testing Data](artifacts/output_19_1.png)
 
 ----
 
@@ -103,7 +103,7 @@
     * _difficulty of visualization:_ grayscale is easier to manipulate and visualize because it has two spatial dimensions and one brightness dimension. On the contrary, RGB has two spatial dimensions and three color dimensions.
     * _processing speed:_ grayscale images means less data, therby making it faster to be processed. It can save huge amount of time in video processing
 
-![png](output_25_0.png)
+![Preprocessing - Train images to gray scaled images](artifacts/output_25_0.png)
 
 
 - **Converting Gray images to Scaled / Normalized images:** The second step need the image data to be normalized so that the it has mean zero and equal variance. For image data, `(pixel - 128)/ 128` is a quick way to approximately normalize the data and can be used in this project. _This step changes the range of pixel intensity so all images can have consistent range for pixel values. The reason of normalization is following:
@@ -111,14 +111,14 @@
     * _model stability:_ skewed pixel values are harmful, because our model will multiply weights and add bias to these image pixels. If extremely large or small values are involved, both operations can amplify the skewness and cause large error.
     * _improve gradient calculation:_ model needs to calculate gradients in backward propagation. With skewed pixel values, gradient calculation can be out of control.
 
-![png](output_26_0.png)
+![Preprocessing - Gray images to normalized images](artifacts/output_26_0.png)
 
 
 - **Converting Scaled Images to Contrast Stretched Images:** 3. Rescale Intensity as an experiment, I found above simple linear transform can be further improved with “exposure.rescale_intensity” method from skimage library. It uniformly rescaled image intensity to make pixel values inside consistent range and achieved better results. The reason of contrast stretching is following:
 
     * _rescaling intensity:_ images can have very different contrast due to glare, change of illumination intensity, or etc. It causes images either very bright or too dark, which is difficult to recognize.
 
-![png](output_27_0.png)
+![Preprocessing - Normalized images to Contrast Stretched images](artifacts/output_27_0.png)
 
 
 ### [B.] Fine tuning the Model Architecture
@@ -132,7 +132,7 @@
  - learning rate = 0.001
  
 
-![LeNet Model Architecture](artifacts/LeNet Model Architecture.png)
+![LeNet Model Architecture for Classification](artifacts/LeNet Model Architecture.png)
 
 ### [C.] Train, Validate and Test the Model
 A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.
@@ -191,7 +191,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 * Validation Set Accuracy  = 0.959 
 * Test Set Accuracy  = 0.943
 
-![png](output_46_0.png)
+![Graph comparing accuracies during training](artifacts/output_46_0.png)
 
 ---
 
@@ -202,7 +202,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 
 ### [A.] Loading and Outputing the downloaded Images after resizing
 
-![png](output_50_2.png)
+![Images from Web for Testing](artifacts/output_50_2.png)
 
 > CLASS LABELS DESCRIPTION FOR TEST IMAGES FROM WEB 
 
@@ -213,7 +213,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 - '.ipynb_checkpoints'
 - '22-bumpy-road.png'
 
-![png](output_51_0.png)
+![Re-sized Web-Images for Testing](artifacts/output_51_0.png)
 
 ### [B.] Predicting the Sign Type for Each Image
 > For example, if the model predicted 1 out of 5 signs correctly, it's 20% accurate on these new images.
@@ -222,7 +222,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 - Class Labels for the test images are: [14 33 15 12 22]
 - The first image might be difficult to classify because it has a similarity with the No entry sign.
 
-![png](output_54_1.png)
+![Preditions for Downloaded Images](artifacts/output_54_1.png)
 
 ### [C.] Analyzing the Performance on images above
 > Test Accuracy = 100.000 %
@@ -230,7 +230,7 @@ From the graph below we can visualize the performance of the training pipeline. 
 ### [D.] Plotting and Priniting Top 5 Softmax Probabilities For Each Image Found on the Web
 > Calculated the top 5 softmax probabilities for each image from the German traffic sign dataset found on the web. 
 
-![png](output_61_1.png)
+![Softmax Probability Bar Chart for Image 1](artifacts/output_61_1.png)
 
     ------------------------------------------------------------
     ------------------------------------------------------------
@@ -245,7 +245,7 @@ From the graph below we can visualize the performance of the training pipeline. 
     ------------------------------------------------------------
     ------------------------------------------------------------
 
-![png](output_61_3.png)
+![Softmax Probability Bar Chart for Image 2](artifacts/output_61_3.png)
 
     ------------------------------------------------------------
     ------------------------------------------------------------
@@ -261,7 +261,7 @@ From the graph below we can visualize the performance of the training pipeline. 
     ------------------------------------------------------------
 
 
-![png](output_61_5.png)
+![Softmax Probability Bar Chart for Image 3](artifacts/output_61_5.png)
 
     ------------------------------------------------------------
     ------------------------------------------------------------
@@ -277,7 +277,7 @@ From the graph below we can visualize the performance of the training pipeline. 
     ------------------------------------------------------------
   
 
-![png](output_61_7.png)
+![Softmax Probability Bar Chart for Image 4](artifacts/output_61_7.png)
 
     ------------------------------------------------------------
     ------------------------------------------------------------
@@ -292,7 +292,7 @@ From the graph below we can visualize the performance of the training pipeline. 
     ------------------------------------------------------------
     ------------------------------------------------------------
 
-![png](output_61_9.png)
+![Softmax Probability Bar Chart for Image 5](artifacts/output_61_9.png)
 
     ------------------------------------------------------------
     ------------------------------------------------------------

@@ -70,9 +70,11 @@
 > Visualized the German Traffic Signs Dataset using the pickled file(s) which included: 
 
 > plotting traffic sign images
+
 ![German Traffic Sign Dataset](artifacts/output_14_0.png)
 
 > plotting the count of each sign
+
 ![Dataset Summary Statistics](artifacts/output_17_1.png)
 
 ### [C.] Exploratory Analysis

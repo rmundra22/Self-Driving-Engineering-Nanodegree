@@ -122,24 +122,13 @@
 
 <img src="artifacts/output_27_0.png" width="40%">
 
-
-### [B.] Fine tuning the Model Architecture
-
- - mu = 0
- - sigma = 0.1
- - dropout = 0.75
- - EPOCHS = 50
- - BATCH_SIZE = 256
- - learning rate = 0.001
- 
-
-### [C.] LeNet Model Architecture for Classification
+### [B.] LeNet Model Architecture for Classification
 
 Though, I didn't made much changes to LeNet architecture and kept on fine tuning it. I got results above assignment's expectation so I didn't tried hard for tuning a altogehter different model architecture. Like adding or taking away layers (pooling, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 
 <img src="artifacts/LeNet Architecture _ f.png">
 
-### [D.] Train, Validate and Test the Model
+### [C.] Train, Validate and Test the Model
 A validation set is used to assess how well the model is performing. A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting. To train the model, I used an Adam Optimizer with learning rate as mentioned above.
 
 
@@ -149,7 +138,7 @@ Training and validating a model is an iterative approach. While building my firs
 
 Now I fixated dropout to 0.25, batch size of 256 and tried incresing epochs say 30, then 40, then 50, then 60 etc. Each time I observed a increase in training and validation accuracied until when I took it above 60. Though the model training and validation accuracies both went up so now the problem was the difference between them which was pretty high. Technically which mean this is a situation of overfitting. 
 
-I knew that dropout techniques has a role to play in dealing with the possible overfitting. I tried increasing the dropout from 0.25, then 0.30, then 0.50, then 0.70, then 0.80 and keeping rest same from the previous step. I observed my model got corrected for overfitting. Now after many steps of tuning I found that the model which gives best results was with above stated hyperparameters.
+I knew that dropout techniques has a role to play in dealing with the possible overfitting. I tried increasing the dropout from 0.25, then 0.30, then 0.50, then 0.70, then 0.80 and keeping rest same from the previous step. I observed my model got corrected for overfitting. Now after many steps of tuning I found that the model which gives best results was with below stated hyperparameters.
 
 ------------------------------------------------------------
 ------------------------------------------------------------
@@ -187,6 +176,15 @@ Train Accuracy = 0.997
 ------------------------------------------------------------
 ------------------------------------------------------------
 
+### [D.] Fine tuning the Model Architecture
+
+ - mu = 0
+ - sigma = 0.1
+ - dropout = 0.75
+ - EPOCHS = 50
+ - BATCH_SIZE = 256
+ - learning rate = 0.001
+ 
 > **Calculating the test data accuracy with the saved Model saved**
 From the graph below we can visualize the performance of the training pipeline. My final model results were:
 

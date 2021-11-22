@@ -1,0 +1,1271 @@
+Toggle navigation Udacity Logo <https://udacity.com/>
+
+  * Logout
+
+  *
+        Logout 
+
+×
+
+  Return to "Self-Driving Car Engineer" in the classroom
+Student Hub chat icon Discuss on Student Hub 
+
+Advanced Lane Finding
+
+  * Review
+  * History
+
+  * Review
+  * Code Review 
+  * History
+
+
+      Unable to review
+
+Your project could not be reviewed. Please resubmit after you address
+the issue noted below by the reviewer.
+
+Key parts of your submission were the same as another student's
+submission or an online source. Please resubmit after you address the
+issue noted below by the reviewer.
+
+
+Potential Source URL:
+
+Download project files
+<https://review-api.udacity.com/api/v1/submissions/2094711/archive>
+ 
+
+
+    Review #1 (this review)
+
+Reviewed 18h ago
+student notes
+
+Nothing Specific
+
+
+    Review #1 (this review)
+
+Reviewed 18h ago
+student notes
+
+Nothing Specific
+
+*CarND-Advanced-Lane-Lines/output_images/save_output_here.txt*
+*CarND-Advanced-Lane-Lines/examples/example.py*
+*CarND-Advanced-Lane-Lines/writeup.md*
+-
+
+x
+
+1
+
+# ADVANCE LANE FINDING
+
+2
+
+​
+
+3
+
+In this project, your goal is to write a software pipeline to identify the lane boundaries in a video.
+
+4
+
+​
+
+5
+
+​
+
+6
+
+# PROJECT GOALS
+
+7
+
+---
+
+8
+
+​
+
+9
+
+The goals / steps of this project are the following:
+
+10
+
+​
+
+11
+
+* [x] Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+
+12
+
+* [x] Apply a distortion correction to raw images.
+
+13
+
+* [x] Use color transforms, gradients, etc., to create a thresholded binary image.
+
+14
+
+* [x] Apply a perspective transform to rectify binary image ("birds-eye view").
+
+15
+
+* [x] Detect lane pixels and fit to find the lane boundary.
+
+16
+
+* [x] Determine the curvature of the lane and vehicle position with respect to center.
+
+17
+
+* [x] Warp the detected lane boundaries back onto the original image.
+
+18
+
+* [x] Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+19
+
+​
+
+20
+
+---
+
+21
+
+​
+
+22
+
+> The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing my pipeline on single frames.  To extract more test images from the videos, one can simply use an image writing method like `cv2.imwrite()`, i.e., one can then read the video in frame by frame as usual, and for frames if he/she want to save for later one can write to an image file.  
+
+23
+
+​
+
+24
+
+​
+
+25
+
+> To help the reviewer examine my work, I saved examples of the output from each stage of my pipeline in the folder called `output_images`, and include a description of what each image shows.    The video called `project_video.mp4` is the video your pipeline should work well on.  
+
+26
+
+​
+
+27
+
+​
+
+28
+
+​
+
+29
+
+​
+
+30
+
+## [I.] COMPUTING CAMERA MATRIC AND DISTORTION COEFFICIENT
+
+31
+
+​
+
+32
+
+The code for this step is contained in the first few code cell of the IPython notebook located in "./Advance Lane Finding.ipynb".
+
+33
+
+​
+
+34
+
+Camera calibration measures the distortion inherent in cameras that utilize lenses so that the images taken with the camera can be corrected by removing the distortion. The measure distortion function takes a Python sequence of checkerboard image filenames taken at different distances, center-offsets, and orientations. Checkerboard patterns are useful for this tasks because of their high contrast, known geometry, and regular pattern. 
+
+35
+
+​
+
+36
+
+![Sample_Chessboard_Calibration_Image](camera_cal/calibration2.jpg)
+
+37
+
+​
+
+38
+
+![Calibrated_Camera_Images](artifacts/Mapping_Corner_calibration2.png)
+
+39
+
+​
+
+40
+
+I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
+
+41
+
+​
+
+42
+
+I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+
+43
+
+​
+
+44
+
+![Corner_Mapped_Images](artifacts/Corner_Mapping_After_Camera_Calibration.png)
+
+45
+
+​
+
+46
+
+​
+
+47
+
+​
+
+48
+
+​
+
+49
+
+## [II.] IMAGE PROCESSING PIPELINE (Road Model Images)
+
+50
+
+​
+
+51
+
+​
+
+52
+
+#### STEP 1. TRANSFORMING ROAD MODEL IMAGES TO DISTORTION-CORRECTED IMAGES
+
+53
+
+​
+
+54
+
+To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
+
+55
+
+​
+
+56
+
+![Distortion_Corrected_Calibration_Image_1](artifacts/Undistortion_Calibration_Image 12.png)
+
+57
+
+​
+
+58
+
+![Distortion_Corrected_Calibration_Image_2](artifacts/Undistortion_Calibration_Image 4.png)
+
+59
+
+​
+
+60
+
+![Distortion_Corrected_Calibration_Image_3](artifacts/Undistortion_Calibration_Image 17.png)
+
+61
+
+​
+
+62
+
+![Distortion_Corrected_Calibration_Image_4](artifacts/Undistortion_Calibration_Image 1.png)
+
+63
+
+​
+
+64
+
+![Distortion_Corrected_Calibration_Image_5](artifacts/Undistortion_Calibration_Image 8.png)
+
+65
+
+​
+
+66
+
+![Distortion_Corrected_Road_Model_Image](artifacts/Undistorted_Road_Model_Image.png)
+
+67
+
+​
+
+68
+
+​
+
+69
+
+​
+
+70
+
+#### STEP 2. GENERATING BINARY-THRESHOLD IMAGES FOR LANE PIXELS (POINTS) DETECTION
+
+71
+
+​
+
+72
+
+Here we apply color and edge thresholding in this section to better detect the lines, and make it easier to find the lane points to fit a polynomial that best describes our left and right lanes later. Continuous experimentation by the task of the gradient thresholding and facilitating it with the changing color spaces we should adopt to increase our chances of detecting near perfect lanes-lines. Few Experiments that were carried out in this stage:
+
+73
+
+​
+
+74
+
+​
+
+75
+
+**A. GRADIENT THRESHOLDING**
+
+76
+
+​
+
+77
+
+* We use the Sobel operator to identify gradients, that is change in color intensity in the image. Higher values would denote strong gradients, and therefore sharp changes in color
+
+78
+
+​
+
+79
+
+* We experimented with many parameters and across different Sobel operations and came up with this final result shown below.
+
+80
+
+​
+
+81
+
+![Gradient_Thresholding_Road_Model_Image_1](artifacts/Gradient_Thresholding_Road_Model_Image_1.png)
+
+82
+
+​
+
+83
+
+![Gradient_Thresholding_Road_Model_Image_2](artifacts/Gradient_Thresholding_Road_Model_Image_2.png)
+
+84
+
+​
+
+85
+
+​
+
+86
+
+​
+
+87
+
+**B. COLOUR THRESHOLDING**
+
+88
+
+​
+
+89
+
+* We experiment with different color spaces to see which color space and channel(s) we should use for the most effective separation of lane lines. 
+
+90
+
+​
+
+91
+
+* On the RGB components, we see that the blue channel is worst at identifying yellow lines, while the red channel seems to give best results.
+
+92
+
+​
+
+93
+
+* For HLS and HSV, the hue channel produces an extremely noisy output, while the saturation channel of HLS seems to give the strong results; better than HSV’s saturation channel. conversely, HSV’s value channel is giving a very clear grayscale-ish image, especially on the yellow line, much better than HLS’ lightness channel.
+
+94
+
+​
+
+95
+
+> At this stage, we are faced with various choices that have pros and cons. Our goal here is to find the right thresholds on a given color channel to highlight yellow and white lines of the lane. There are actually many ways we could achieve this result, but we choose to use HLS because we already know how to set thresholds for yellow and white lane lines from Project 1: Simple Lane Detection. 
+
+96
+
+​
+
+97
+
+​
+
+98
+
+**C. COMBINED THRESHOLDING PIPELINE**
+
+99
+
+​
+
+100
+
+* I used a combination of color and gradient thresholds to generate a binary image (thresholding steps were carried out using function `thresholding_pipeline()` and `plot_combined_thresholding()`). Here's an example of my output for this step.
+
+101
+
+​
+
+102
+
+* On the left image, all green pixels were retained by our Sobel thresholding, while the blue pixels were identified by our HLS color thresholding. The results are very encouraging and it seems we have found the right parameters to detect lanes in a robust manner. We turn next to applying a perspective transform to our image and produce a bird’s eye view of the lane.
+
+103
+
+​
+
+104
+
+![Combined_Thresholding_Road_Model_Image_1](artifacts/grad_colour_thresholding_image1.jpg)
+
+105
+
+​
+
+106
+
+![Combined_Thresholding_Road_Model_Image_2](artifacts/grad_colour_thresholding_image2.jpg)
+
+107
+
+​
+
+108
+
+​
+
+109
+
+#### STEP 3. PERSPECTIVE TRANSFORMATION TO ACCURATELY FINDING LANE LINE'S AND IT'S CURVATURE
+
+110
+
+​
+
+111
+
+The code for my perspective transform includes a function called `warp()` and `plot_perspective_tranformed_img()`. The `warp()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+
+112
+
+​
+
+113
+
+```python
+
+114
+
+# Four source coordinates manually coded
+
+115
+
+    src = np.float32(
+
+116
+
+        [[577, 450],
+
+117
+
+         [720, 450],
+
+118
+
+         [200, 650],
+
+119
+
+         [1200, 650]])
+
+120
+
+​
+
+121
+
+# Four desired coordinates manually coded
+
+122
+
+    dst = np.float32(
+
+123
+
+        [[100, 100],
+
+124
+
+         [1200, 100],
+
+125
+
+         [100, 710],
+
+126
+
+         [1200, 710]])
+
+127
+
+```
+
+128
+
+​
+
+129
+
+* We now need to define a trapezoidal region in the 2D image using the above `src` points that will go through a perspective transformation  procedures to convert the image to a bird’s eye view, like in the below:
+
+130
+
+​
+
+131
+
+![Perspective_Transformed_Road_Model_Image_1](perspective_tranformed_test_image1.jpg)
+
+132
+
+​
+
+133
+
+![Perspective_Transformed_Road_Model_Image_2](perspective_tranformed_test_image2.jpg)
+
+134
+
+​
+
+135
+
+* This resulted in the following source and destination points:
+
+136
+
+​
+
+137
+
+| Source        | Destination   | 
+
+138
+
+|:-------------:|:-------------:| 
+
+139
+
+| 577, 450      | 100, 100      | 
+
+140
+
+| 720, 450      | 1200, 100     |
+
+141
+
+| 200, 650      | 100, 710      |
+
+142
+
+| 1200, 650     | 1200, 710     |
+
+143
+
+​
+
+144
+
+* I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+
+145
+
+​
+
+146
+
+![Perspective_Tranformed_Image_1](artifacts/perspective_tranformed_image1.jpg)
+
+147
+
+​
+
+148
+
+![Perspective_Tranformed_Image_2](artifacts/perspective_tranformed_image2.jpg)
+
+149
+
+​
+
+150
+
+​
+
+151
+
+​
+
+152
+
+#### STEP 4. LANE BIFURCATION, DRIVABLE AREA MAPPING AND RADIUS OF CURVATURE
+
+153
+
+​
+
+154
+
+**A. PLOTTING OF HISTOGRAM TO CHECK FOR BINARY ACTIVATIONS**
+
+155
+
+​
+
+156
+
+* To decide explicitly which pixels are part of the lines and which belong to the left line and which belong to the right line. Plotting a histogram of where the binary activations occur across the image is one potential solution for this. 
+
+157
+
+​
+
+158
+
+* With this histogram we are adding up the pixel values along each column in the image. In our thresholded binary image, pixels are either 0 or 1, so the two most prominent peaks in this histogram will be good indicators of the x-position of the base of the lane lines.
+
+159
+
+​
+
+160
+
+![Histogram_Road_Model_Image_1](artifacts/Histogram_Road_Model_Image_1.png)
+
+161
+
+​
+
+162
+
+![Histogram_Road_Model_Image_2](artifacts/Histogram_Road_Model_Image_2.png)
+
+163
+
+​
+
+164
+
+​
+
+165
+
+**B. SLIDING WINDOW TO FIND PIXELS IN THE LANE**
+
+166
+
+​
+
+167
+
+* We can use that as a starting point for where to search for the lines. From that point, we can use a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
+
+168
+
+​
+
+169
+
+* For better details about how exactly we did it, read line by line commented code inside the function `find_lane_pixels()`.
+
+170
+
+​
+
+171
+
+![Lane_Pixels_Road_Model_Image_1](artifacts/Lane_Pixels_Road_Model_Image_1.png)
+
+172
+
+​
+
+173
+
+![Lane_Pixels_Road_Model_Image_2](artifacts/Lane_Pixels_Road_Model_Image_2.png)
+
+174
+
+​
+
+175
+
+​
+
+176
+
+**C. FITTING A POLYNOMIAL 'N-degree'**
+
+177
+
+​
+
+178
+
+* Here we fit a polynomial for the detected left lane line points and right lane line points. We use fucntions namely `fit_polynomial()` to fit the appropriate degree polynomial and bifurcate the left and the right lane lines.
+
+179
+
+​
+
+180
+
+* Futher to visualize the detected lane lines and mark the drivable path on the bird eye view road, the area between the detected lane lines is then mapped with green colour and is mapped on to the original Image.
+
+181
+
+​
+
+182
+
+![Drivable_Area_Road_Model_Image_1](artifacts/Drivable_Area_Road_Model_Image_1.png)
+
+183
+
+​
+
+184
+
+![Drivable_Area_Road_Model_Image_2](artifacts/Drivable_Area_Road_Model_Image_2.png)
+
+185
+
+​
+
+186
+
+​
+
+187
+
+**D. COMBININIG PROCESSED IMAGE WITH THRESHED IMAGE**
+
+188
+
+​
+
+189
+
+* Here I reverse the perspective transformation applied previously and then I try to map the drivable area detected in the previous steps on the threshed image
+
+190
+
+​
+
+191
+
+* Futher to visualize the detected mapping as the drivable path down the road, the path map image and the gradient and colour threshed images are combined. Details in the function `reverse_warp()`
+
+192
+
+​
+
+193
+
+![Masked_Combined_Road_Model_Image_1](artifacts/Masked_Combined_Road_Model_Image_1.png)
+
+194
+
+​
+
+195
+
+![Masked_Combined_Road_Model_Image_2](artifacts/Masked_Combined_Road_Model_Image_2.png)
+
+196
+
+​
+
+197
+
+​
+
+198
+
+**E. FINDING RADIUS OF CURVATURE OF LANE LINES AND VEHICLE ALIGNMENT
+
+199
+
+​
+
+200
+
+* At this step I calculate the curvature of polynomial functions in the pixels i.e. the right and the left lane lines. Refer fucntion `measure_curvature_pixels()` for more details.
+
+201
+
+​
+
+202
+
+* Next the calculate the Relative vehicle alignment from the lane's center -- positive means rightwards deviation from lane's center and similarly negative means leftward deviation from lane's center.
+
+203
+
+​
+
+204
+
+![Final_lane_Mapping_Road_Model_Image_1](artifacts/Final_lane_Mapping_Road_Model_Image_1.png)
+
+205
+
+​
+
+206
+
+![Final_lane_Mapping_Road_Model_Image_2](artifacts/Final_lane_Mapping_Road_Model_Image_2.png)
+
+207
+
+​
+
+208
+
+​
+
+209
+
+​
+
+210
+
+​
+
+211
+
+### [III.] VIDEO PROCESSING PIPELINE (Road Model Videos)
+
+212
+
+​
+
+213
+
+#### A. FINAL OUTPUT VIDEO FOR THE TEST VIDEO
+
+214
+
+​
+
+215
+
+* For the test video the best fit happened with the three degree polynomial fit. Second degree polynomial fit was able to perfectly detect the lane lines near to the ego vehicle but as the distance from the vehicle increases it starts to fluctuate and sometimes was not able to map the lane lines properly.
+
+216
+
+​
+
+217
+
+* The above software created is robust to shadows from the sides of the roads, changing light conditions was also not able to bring about any significant change while mapping the lane lines.
+
+218
+
+​
+
+219
+
+Here's a [link to my test video result](test_output_videos/project_video_3rd_degree_output.mp4)
+
+220
+
+​
+
+221
+
+Here's a [link to my test video result](test_output_videos/project_video_2nd_degree_output.mp4)
+
+222
+
+​
+
+223
+
+​
+
+224
+
+#### B. FINAL OUTPUT VIDEO FOR THE CHALLENGE TEST VIDEO
+
+225
+
+​
+
+226
+
+* The software developed above is robust to shadows on the roads, changing colour or features of the road. The above software is still not robust to the glare due to the Sunny condition. 
+
+227
+
+​
+
+228
+
+* The above software is still not able to distinguish between the actual lane line and a cracked line on the road and is most likely to fail in such scenario. Also beacuse of the threshing mechanism used here the cracks in the lane gets higher activation peak and hence is detected as one of the lane line.
+
+229
+
+​
+
+230
+
+Here's a [link to my challenege_test video result](test_output_videos/challenge_video_3rd_degree_output.mp4)
+
+231
+
+​
+
+232
+
+​
+
+233
+
+#### C. FINAL OUTPUT VIDEO FOR THE HARDER CHALLENGE TEST VIDEO
+
+234
+
+​
+
+235
+
+* For harder challenge video a three degree polynomial fit was successfully able to map the lane lines in various parts of the video sequence. But a lot of parts gives a better fit with second degree polynomial fit. A code needs to be added which can help the software to smoothly switch between the degree of the polynomial fit.
+
+236
+
+​
+
+237
+
+* Because of the fixed attention window is used here, so the algorithm fails to detect lanes if parts of the lane go beyond that pre-fixed attention region. According to the smooth variation in degree mechanism, we can also move the two sides of the attention window accordingly. Doing this can help the software to focus it's attention to the region where the probability of finding the next lane line points is maximum. 
+
+238
+
+​
+
+239
+
+Here's a [link to my harder_challenge_test video result](test_output_videos/harder_challenge_video_3rd_degree_output.mp4)
+
+240
+
+​
+
+241
+
+---
+
+242
+
+​
+
+243
+
+### [IV.] DISCUSSIONS MOVING AHEAD
+
+244
+
+​
+
+245
+
+#### PROBLEMS AND ISSUES WITH THE EXUSTING PIPELINE AND HOW TO MAKE IT MORE ROBUST
+
+246
+
+​
+
+247
+
+This was an exciting, but rather difficult project, which felt very different from our previous projects. The long range of continuous experimentaion really took efforts and understanding of the concepts learned. We’ve covered how to perform camera calibration, color and gradient thresholds, as well as perspective transform and sliding windows to identify lane lines! The sliding windows code was particularly hard to understand initially but after long time debugging it and making comments (all available on my notebook) I finally understood every line!
+
+248
+
+​
+
+249
+
+**We believe there are many improvements that could be made to this project, such as:**
+
+250
+
+​
+
+251
+
+* Experiments with LAB and YUV color spaces to determine whether we can produce better color thresholding.
+
+252
+
+​
+
+253
+
+* Use convolutions instead of sliding windows to identify hot pixels. Convolutions will be faster and also computationally efficient.
+
+254
+
+​
+
+255
+
+* Implementing outlier rejection and use a low-pass filter to smooth the lane detection over frames, meaning add each new detection to a weighted mean of the position of the lines to avoid jitter. 
+
+256
+
+​
+
+257
+
+* Formulate a way so as to pass the lane information from previous frame to present frame such that our software know in advance or can calculate a fair expectation of where to look for the drivable lane area.
+
+258
+
+​
+
+259
+
+* Use of deep learning based techniques like semantic segmentation to map out the free space or the drivale area and hence providing flexiblility to the software or removing the fixated trapezoidal area approach to search for drivable area. 
+
+260
+
+​
+
+261
+
+* With the semantic segmentation based approach any disturbance in the lane line detection because of the objects in the environment can also be avoided using this appraoch. 
+
+262
+
+​
+
+263
+
+* Moreover, we need to build a much more robust pipeline to succeed on the two challenge videos that are part of this project.
+
+*CarND-Advanced-Lane-Lines/README.md*
+Your reviewer has provided annotations for your project
+Download annotations
+
+
+      Meets Specifications
+
+
+    Well Done! :clap: :clap: Congratulations on completing this project.
+    :muscle: :fire: :fire:
+
+You have done a good job on this project! You understand all the parts
+of this project very well.
+
+*Keep up the great work and stay Udacious :udacious:*
+
+
+      PS: Please rate my review. Five :star: would be appreciated. If
+      you have any feedback, please add a comment to your rating.
+
+
+      Writeup / README
+
+The writeup / README should include a statement and supporting figures /
+images that explain how each rubric item was addressed, and specifically
+where in the code each step was handled.
+
+✅Well done :clap: :clap: The implementation process is presented in the
+writeup and example images for each stage of the implemented pipeline
+are provided.
+
+Screen Shot 2020-01-29 at 8.57.07 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580327893/Screen_Shot_2020-01-29_at_8.57.07_PM.png>
+
+
+      Camera Calibration
+
+OpenCV functions or other methods were used to calculate the correct
+camera matrix and distortion coefficients using the calibration
+chessboard images provided in the repository *(note these are 9x6
+chessboard images, unlike the 8x6 images used in the lesson)*. The
+distortion matrix should be used to un-distort one of the calibration
+images provided as a demonstration that the calibration is correct.
+Example of undistorted calibration image is Included in the writeup (or
+saved to a folder).
+
+✅Well done :clap: :clap: The process of camera calibration has been
+successfully applied to un-distort the test image.
+
+Screen Shot 2020-01-29 at 9.01.04 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328125/Screen_Shot_2020-01-29_at_9.01.04_PM.png>
+
+
+      Pipeline (test images)
+
+Distortion correction that was calculated via camera calibration has
+been correctly applied to each image. An example of a distortion
+corrected image should be included in the writeup (or saved to a folder)
+and submitted with the project.
+
+✅Well done :clap: :clap: The distortion correction has been correctly
+applied to real-world images.
+
+A method or combination of methods (i.e., color transforms, gradients)
+has been used to create a binary image containing likely lane pixels.
+There is no "ground truth" here, just visual verification that the
+pixels identified as part of the lane lines are, in fact, part of the
+lines. Example binary images should be included in the writeup (or saved
+to a folder) and submitted with the project.
+
+✅Well done :clap: :clap: The input image was converted into the HLS
+color space, and binary thresholds were applied on each output.
+
+Screen Shot 2020-01-29 at 9.02.45 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328266/Screen_Shot_2020-01-29_at_9.02.45_PM.png>
+
+OpenCV function or other method has been used to correctly rectify each
+image to a "birds-eye view". Transformed images should be included in
+the writeup (or saved to a folder) and submitted with the project.
+
+✅Well done :clap: :clap:
+
+Screen Shot 2020-01-29 at 9.04.12 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328312/Screen_Shot_2020-01-29_at_9.04.12_PM.png>
+
+Methods have been used to identify lane line pixels in the rectified
+binary image. The left and right line have been identified and fit with
+a curved functional form (e.g., spine or polynomial). Example images
+with line pixels identified and a fit overplotted should be included in
+the writeup (or saved to a folder) and submitted with the project.
+
+✅Well done :clap: :clap: The data points found with the sliding window
+method were fit with a polynomial and both lane lines have been
+correctly identified.
+
+Screen Shot 2020-01-29 at 9.06.04 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328425/Screen_Shot_2020-01-29_at_9.06.04_PM.png>
+
+Here the idea is to take the measurements of where the lane lines are
+and estimate how much the road is curving and where the vehicle is
+located with respect to the center of the lane. The radius of curvature
+may be given in meters assuming the curve of the road follows a circle.
+For the position of the vehicle, you may assume the camera is mounted at
+the center of the car and the deviation of the midpoint of the lane from
+the center of the image is the offset you're looking for. As with the
+polynomial fitting, convert from pixels to meters.
+
+✅Well done :clap: :clap: The required parameters were computed providing
+users with information on the estimated radius of curvature and the
+position of the vehicle with respect to the center of the road. These
+measurements are printed on the video frame.
+
+Screen Shot 2020-01-29 at 9.06.43 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328463/Screen_Shot_2020-01-29_at_9.06.43_PM.png>
+
+The fit from the rectified image has been warped back onto the original
+image and plotted to identify the lane boundaries. This should
+demonstrate that the lane boundaries were correctly identified. An
+example image with lanes, curvature, and position from center should be
+included in the writeup (or saved to a folder) and submitted with the
+project.
+
+✅Well done :clap: :clap:
+
+
+      Pipeline (video)
+
+The image processing pipeline that was established to find the lane
+lines in images successfully processes the video. The output here should
+be a new video where the lanes are identified in every frame, and
+outputs are generated regarding the radius of curvature of the lane and
+vehicle position within the lane. The pipeline should correctly map out
+curved lines and not fail when shadows or pavement color changes are
+present. The output video should be linked to in the writeup and/or
+saved and submitted with the project.
+
+✅Awesome :fire: :rocket:
+
+Screen Shot 2020-01-29 at 9.09.37 PM.png
+<https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84902/1580328684/Screen_Shot_2020-01-29_at_9.09.37_PM.png>
+
+
+      Discussion
+
+Discussion includes some consideration of problems/issues faced, what
+could be improved about their algorithm/pipeline, and what hypothetical
+cases would cause their pipeline to fail.
+
+✅Well done :clap: :clap: You provided a reflection on the implemented
+algorithm, identified its limitations, and suggested possible improvements.
+
+ Download Project
+<https://review-api.udacity.com/api/v1/submissions/2094711/archive>
+
+Return to Path
+Rate this review
+( ) //( ) //( ) //( ) //( ) //
+
